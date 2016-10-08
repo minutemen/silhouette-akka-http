@@ -206,6 +206,8 @@ class AkkaHttpRequestPipelineSpec extends Specification {
     */
   trait Context extends Scope {
 
+    val sessionName = "session"
+
     val headers = Map(
       "TEST1" -> Seq("value1", "value2"),
       "TEST2" -> Seq("value1")
@@ -217,7 +219,7 @@ class AkkaHttpRequestPipelineSpec extends Specification {
     val cookies = Seq(
       Cookie("test1", "value1"),
       Cookie("test2", "value2"),
-      Session.asCookie(Session(Session.name, session))
+      Session.asCookie(Session(sessionName, session))
     )
     val queryParams = Map(
       "test1" -> Seq("value1", "value2"),
@@ -233,9 +235,9 @@ class AkkaHttpRequestPipelineSpec extends Specification {
     )
 
     /**
-      * A request pipeline which handles a fake request.
+      * A request pipeline which handles a request.
       */
-    val requestPipeline = AkkaHttpRequestPipeline(request)
+    val requestPipeline = AkkaHttpRequestPipeline(request, sessionName)
   }
 }
 
