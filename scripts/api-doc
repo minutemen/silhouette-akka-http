@@ -18,7 +18,7 @@
 #
 set -o nounset -o errexit
 
-if [ "$TRAVIS_REPO_SLUG" == "mohiva/silhouette" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ]; then
+if [ "$TRAVIS_REPO_SLUG" == "mohiva/silhouette-akka-http" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ]; then
   echo ""
   echo "Starting API-Doc update process"
 
