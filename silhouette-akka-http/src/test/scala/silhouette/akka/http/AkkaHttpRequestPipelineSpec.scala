@@ -1,7 +1,7 @@
 package silhouette.akka.http
 
 import akka.http.scaladsl.model.Uri.Query
-import akka.http.scaladsl.model.{HttpRequest, Uri}
+import akka.http.scaladsl.model.{ HttpRequest, Uri }
 import akka.http.scaladsl.model.headers.RawHeader
 import org.specs2.mutable.Specification
 import org.specs2.specification.Scope
@@ -9,8 +9,8 @@ import silhouette.akka.http.session.Session
 import silhouette.http.Cookie
 
 /**
-  * Test case for the [[AkkaHttpRequestPipeline]] class.
-  */
+ * Test case for the [[AkkaHttpRequestPipeline]] class.
+ */
 class AkkaHttpRequestPipelineSpec extends Specification {
 
   "The `headers` method" should {
@@ -202,8 +202,8 @@ class AkkaHttpRequestPipelineSpec extends Specification {
   }
 
   /**
-    * The context.
-    */
+   * The context.
+   */
   trait Context extends Scope {
 
     val sessionName = "session"
@@ -228,15 +228,15 @@ class AkkaHttpRequestPipelineSpec extends Specification {
 
     val akkaHeaders = headers.flatMap(p => p._2.map(v => RawHeader(p._1, v))).toList
     val akkaCookie = cookies.map(c => akka.http.scaladsl.model.headers.`Cookie`(c.name, c.value))
-    val akkaQueryParams = Query(queryParams.map{case (name, values) => values.map(v => name -> v)}.flatten.toList: _*)
+    val akkaQueryParams = Query(queryParams.map { case (name, values) => values.map(v => name -> v) }.flatten.toList: _*)
     val request = HttpRequest(
       headers = akkaHeaders ++ akkaCookie,
       uri = Uri().withQuery(akkaQueryParams)
     )
 
     /**
-      * A request pipeline which handles a request.
-      */
+     * A request pipeline which handles a request.
+     */
     val requestPipeline = AkkaHttpRequestPipeline(request, sessionName)
   }
 }

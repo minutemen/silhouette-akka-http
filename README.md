@@ -1,8 +1,6 @@
 Silhouette akka-http
 ====================
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.mohiva/silhouette-akka-http_2.11/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.mohiva/silhouette-akka-http_2.11) [![Build Status](https://travis-ci.org/mohiva/silhouette-akka-http.png)](https://travis-ci.org/mohiva/silhouette-akka-http) [![Coverage Status](https://coveralls.io/repos/mohiva/silhouette-akka-http/badge.svg?branch=master&service=github)](https://coveralls.io/github/mohiva/silhouette-akka-http?branch=master) [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/mohiva/silhouette-akka-http?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![OpenCollective](https://opencollective.com/silhouette-akka-http/backers/badge.svg)](#backers)
-[![OpenCollective](https://opencollective.com/silhouette-akka-http/sponsors/badge.svg)](#sponsors)
 
 Implementation of Silhouette for akka-http framework
 
