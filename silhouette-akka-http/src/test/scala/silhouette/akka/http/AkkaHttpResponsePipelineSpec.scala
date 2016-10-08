@@ -160,6 +160,8 @@ class AkkaHttpResponsePipelineSpec extends Specification {
     */
   trait Context extends Scope {
 
+    val sessionName = "session"
+
     val headers = Map(
       "TEST1" -> Seq("value1", "value2"),
       "TEST2" -> Seq("value1")
@@ -171,7 +173,7 @@ class AkkaHttpResponsePipelineSpec extends Specification {
     val cookies = Seq(
       Cookie("test1", "value1"),
       Cookie("test2", "value2"),
-      Session.asCookie(Session(Session.name, session))
+      Session.asCookie(Session(sessionName, session))
     )
 
     val akkaHeaders = headers.flatMap(p => p._2.map(v => RawHeader(p._1, v))).toList
@@ -181,9 +183,9 @@ class AkkaHttpResponsePipelineSpec extends Specification {
     )
 
     /**
-      * A response pipeline which handles a fake response.
+      * A response pipeline which handles a response.
       */
-    val responsePipeline = AkkaHttpResponsePipeline(response)
+    val responsePipeline = AkkaHttpResponsePipeline(response, sessionName)
   }
 }
 
