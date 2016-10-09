@@ -1,10 +1,10 @@
-Contributing to Silhouette akka-http
-====================================
+Contributing to Silhouette - Akka HTTP
+======================================
 
 How to contribute
 -----------------
 
-Silhouette akka-http is an open source project. Contributions are appreciated.
+Silhouette - Akka HTTP is an open source project. Contributions are appreciated.
 
 Some ways in which you can contribute are: reporting errors, improving documentation, adding examples, adding support
 for more services, fixing bugs, suggesting new features, adding test cases, translating messages, and whatever else
@@ -48,4 +48,4 @@ copyright license to the Mohiva Organisation, unless the contribution clearly st
 [mailing list]: https://groups.google.com/forum/#!forum/silhouette-akka-http
 [Scala Style Guide]: http://docs.scala-lang.org/style/
 [watch the result]: https://travis-ci.org/mohiva/silhouette-akka-http/pull_requests
-[readme.io]: http://silhouette-akka-http.mohiva.com/
+[readme.io]: http://silhouette.mohiva.com/
