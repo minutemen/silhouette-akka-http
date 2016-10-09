@@ -1,8 +1,8 @@
 ### Are you looking for help?
 
-This is an issue tracker, used to manage and track the development of Silhouette akka-http. It is not a support system and so it is not a place to ask questions or get help. If you're not sure if you have found a bug, the best place to start is with either the [users mailing list](https://groups.google.com/forum/#!forum/silhouette-akka-http) or [Gitter channel](https://gitter.im/mohiva/silhouette-akka-http). If you have a feature request, the [mailing list](https://groups.google.com/forum/#!forum/silhouette-akka-http) is a better forum than an issue tracker to discuss it.
+This is an issue tracker, used to manage and track the development of Silhouette - Akka HTTP. It is not a support system and so it is not a place to ask questions or get help. If you're not sure if you have found a bug, the best place to start is with either the [mailing list] or [Gitter channel]. If you have a feature request, the [mailing list] is a better forum than an issue tracker to discuss it.
 
-### Silhouette akka-http Version (1.0.x / etc)
+### Silhouette - Akka HTTP Version (1.0.x / etc)
 
 
 ### Operating System (Ubuntu 15.10 / MacOS 10.10 / Windows 10)
@@ -29,7 +29,7 @@ Please describe the expected behavior of the issue, starting from the first acti
 
 Please provide a description of what actually happens, working from the same starting point.
 
-Be descriptive: "it doesn't work" does not describe what the behavior actually is -- instead, provide a meaningful description of the issue.  Copy and paste logs, and include any URLs.  Turn on internal Silhouette akka-http logging with `<logger name="com.mohiva" value="TRACE"/>` if there is no log output.
+Be descriptive: "it doesn't work" does not describe what the behavior actually is -- instead, provide a meaningful description of the issue.  Copy and paste logs, and include any URLs.  Turn on internal Silhouette - Akka HTTP logging with `<logger name="silhouette.akka.http" value="TRACE"/>` if there is no log output.
 
 1.
 2.
@@ -40,3 +40,6 @@ Be descriptive: "it doesn't work" does not describe what the behavior actually i
 Please provide a PR with a failing test.
 
 If the issue is more complex or requires configuration, please provide a link to a project on GitHub that reproduces the issue.
+
+[mailing list]: https://groups.google.com/forum/#!forum/silhouette-akka-http
+[Gitter channel]: https://gitter.im/mohiva/silhouette-akka-http

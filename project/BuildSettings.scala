@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 Mohiva Organisation (license at mohiva dot com)
+ * Copyright 2016 Mohiva Organisation (license at mohiva dot com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -194,8 +194,8 @@ object Publish extends AutoPlugin {
   }
 
   override def projectSettings = sonatypeSettings ++ Seq(
-    description := "Implementation of authentication library silhouette for akka-http framework that supports several authentication methods, including OAuth1, OAuth2, OpenID, CAS, Credentials, Basic Authentication, Two Factor Authentication or custom authentication schemes",
-    homepage := Some(url("http://silhouette-akka-http.mohiva.com/")),
+    description := "Akka HTTP bindings for the Silhouette authentication library",
+    homepage := Some(url("http://silhouette.mohiva.com/")),
     licenses := Seq("Apache License" -> url("https://github.com/mohiva/silhouette-akka-http/blob/master/LICENSE")),
     publishMavenStyle := true,
     publishArtifact in Test := false,
