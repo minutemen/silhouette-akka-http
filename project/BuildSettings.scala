@@ -106,7 +106,7 @@ object Doc extends AutoPlugin {
 
   override def projectSettings = Seq(
     autoAPIMappings := true,
-    apiURL := Some(url(s"http://api.silhouette.mohiva.com/${version.value}/")),
+    apiURL := Some(url(s"http://api.silhouette-akka-http.mohiva.com/${version.value}/")),
     apiMappings ++= {
       implicit val cp = (fullClasspath in Compile).value
       Map(
@@ -161,7 +161,7 @@ object APIDoc {
         IO.copy(betterMappings)
         repo
       },
-      git.remoteRepo := "git@github.com:mohiva/silhouette.git"
+      git.remoteRepo := "git@github.com:mohiva/silhouette-akka-http.git"
     )
 }
 
@@ -176,8 +176,8 @@ object Publish extends AutoPlugin {
 
   private val pom = {
     <scm>
-      <url>git@github.com:mohiva/silhouette.git</url>
-      <connection>scm:git:git@github.com:mohiva/silhouette.git</connection>
+      <url>git@github.com:mohiva/silhouette-akka-http.git</url>
+      <connection>scm:git:git@github.com:mohiva/silhouette-akka-http.git</connection>
     </scm>
       <developers>
         <developer>
@@ -186,17 +186,17 @@ object Publish extends AutoPlugin {
           <url>http://mohiva.com</url>
         </developer>
         <developer>
-          <id>fernandoacorreia</id>
-          <name>Fernando Correia</name>
-          <url>http://www.fernandocorreia.info/</url>
+          <id>datalek</id>
+          <name>Alessandro Ferlin</name>
+          <url>https://github.com/datalek</url>
         </developer>
       </developers>
   }
 
   override def projectSettings = sonatypeSettings ++ Seq(
-    description := "Framework acnostic authentication library for Scala that supports several authentication methods, including OAuth1, OAuth2, OpenID, CAS, Credentials, Basic Authentication, Two Factor Authentication or custom authentication schemes",
-    homepage := Some(url("http://silhouette.mohiva.com/")),
-    licenses := Seq("Apache License" -> url("https://github.com/mohiva/silhouette/blob/master/LICENSE")),
+    description := "Implementation of authentication library silhouette for akka-http framework that supports several authentication methods, including OAuth1, OAuth2, OpenID, CAS, Credentials, Basic Authentication, Two Factor Authentication or custom authentication schemes",
+    homepage := Some(url("http://silhouette-akka-http.mohiva.com/")),
+    licenses := Seq("Apache License" -> url("https://github.com/mohiva/silhouette-akka-http/blob/master/LICENSE")),
     publishMavenStyle := true,
     publishArtifact in Test := false,
     pomIncludeRepository := { _ => false },

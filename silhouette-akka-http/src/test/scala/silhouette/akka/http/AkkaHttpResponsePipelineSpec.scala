@@ -1,15 +1,15 @@
 package silhouette.akka.http
 
 import akka.http.scaladsl.model.HttpResponse
-import akka.http.scaladsl.model.headers.{HttpCookie, RawHeader, `Set-Cookie`}
+import akka.http.scaladsl.model.headers.{ HttpCookie, RawHeader, `Set-Cookie` }
 import org.specs2.mutable.Specification
 import org.specs2.specification.Scope
 import silhouette.akka.http.session.Session
 import silhouette.http.Cookie
 
 /**
-  * Test case for the [[AkkaHttpResponsePipeline]] class.
-  */
+ * Test case for the [[AkkaHttpResponsePipeline]] class.
+ */
 class AkkaHttpResponsePipelineSpec extends Specification {
 
   "The `headers` method" should {
@@ -156,8 +156,8 @@ class AkkaHttpResponsePipelineSpec extends Specification {
   }
 
   /**
-    * The context.
-    */
+   * The context.
+   */
   trait Context extends Scope {
 
     val sessionName = "session"
@@ -183,8 +183,8 @@ class AkkaHttpResponsePipelineSpec extends Specification {
     )
 
     /**
-      * A response pipeline which handles a response.
-      */
+     * A response pipeline which handles a response.
+     */
     val responsePipeline = AkkaHttpResponsePipeline(response, sessionName)
   }
 }
