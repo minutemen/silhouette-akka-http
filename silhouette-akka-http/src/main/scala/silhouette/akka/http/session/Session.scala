@@ -35,15 +35,15 @@ object Session {
   private def urlDecode(s: String): String = URLDecoder.decode(s, "UTF-8")
 
   /**
-   * Extract [[Session]] from a [[Cookie]]
+   * Extract [[Session]] from a `silhouette.http.Cookie`
    * @param c The cookie where the session is store
    * @return a [[scala.util.Success]] with [[Session]] or [[scala.util.Failure]] if is not possible extract a [[Session]]
    */
   def fromCookie(c: Cookie): Try[Session] = Session.deserialize(c.value).map(v => Session(c.name, v.toMap))
   /**
-   * Transform [[Session]] to a [[Cookie]]
+   * Transform [[Session]] to a `silhouette.http.Cookie`
    * @param s The session to transform
-   * @return a [[Cookie]] with session serialized as value
+   * @return a `silhouette.http.Cookie` with session serialized as value
    */
   def asCookie(s: Session): Cookie = Cookie(name = s.sessionName, value = Session.serialize(s.data))
 
