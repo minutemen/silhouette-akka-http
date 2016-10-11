@@ -22,7 +22,7 @@ import silhouette.akka.http.conversions.HttpCookieConversion._
 import silhouette.akka.http.session.Session
 
 /**
- * The request pipeline implementation based on the [[HttpRequest]].
+ * The request pipeline implementation based on the `akka.http.scaladsl.model.HttpRequest`.
  *
  * @param request The request this pipeline handles.
  * @param sessionName The cookie name where store session

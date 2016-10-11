@@ -19,12 +19,12 @@ import akka.http.scaladsl.model.headers.HttpCookie
 import silhouette.http.Cookie
 
 /**
- * Utility object that convert a [[Cookie]] to an [[HttpCookie]] and vice versa
+ * Utility object that convert a `silhouette.http.Cookie` to an `akka.http.scaladsl.model.headers.HttpCookie` and vice versa
  */
 object HttpCookieConversion {
 
   /**
-   * Converts a [[Cookie]] to an [[HttpCookie]]
+   * Converts a `silhouette.http.Cookie` to an `akka.http.scaladsl.model.headers.HttpCookie`
    */
   val cookieToHttpCookie: Cookie => HttpCookie = cookie => HttpCookie(
     name = cookie.name,
@@ -39,7 +39,7 @@ object HttpCookieConversion {
   )
 
   /**
-   * Converts an [[HttpCookie]] to an [[Cookie]]
+   * Converts an `akka.http.scaladsl.model.headers.HttpCookie` to an `silhouette.http.Cookie`
    */
   val httpCookieToCookie: HttpCookie => Cookie = httpCookie => Cookie(
     name = httpCookie.name,
