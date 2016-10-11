@@ -1,0 +1,174 @@
+<!DOCTYPE html >
+<html>
+        <head>
+          <title>http - silhouette.akka.http</title>
+          <meta name="description" content="http - silhouette.akka.http" />
+          <meta name="keywords" content="http silhouette.akka.http" />
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link href="../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../lib/tools.tooltip.js"></script>
+      
+      <script type="text/javascript">
+         if(top === self) {
+            var url = '../../../index.html';
+            var hash = 'silhouette.akka.http.package';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
+    
+        </head>
+        <body class="value">
+      <div id="definition">
+        <img alt="Package" src="../../../lib/package_big.png" />
+        <p id="owner"><a href="../../package.html" class="extype" name="silhouette">silhouette</a>.<a href="../package.html" class="extype" name="silhouette.akka">akka</a></p>
+        <h1>http</h1><span class="permalink">
+      <a href="../../../index.html#silhouette.akka.http.package" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      </div>
+
+      <h4 id="signature" class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <span class="name">http</span>
+      </span>
+      </h4>
+      
+          <div id="comment" class="fullcommenttop"></div>
+        
+
+      <div id="mbrsel">
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
+        
+        
+        <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+          </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        
+
+        <div id="types" class="types members">
+              <h3>Type Members</h3>
+              <ol><li name="silhouette.akka.http.AkkaHttpRequestPipeline" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="AkkaHttpRequestPipelineextendsRequestPipeline[akka.http.scaladsl.model.HttpRequest]withProductwithSerializable"></a>
+      <a id="AkkaHttpRequestPipeline:AkkaHttpRequestPipeline"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="AkkaHttpRequestPipeline.html"><span class="name">AkkaHttpRequestPipeline</span></a><span class="params">(<span name="request">request: <span class="extype" name="akka.http.scaladsl.model.HttpRequest">HttpRequest</span></span>, <span name="sessionName">sessionName: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result"> extends <a href="http://api.silhouette.mohiva.com/1.0.0-SNAPSHOT/index.html#silhouette.http.RequestPipeline" class="extype" target="_top">RequestPipeline</a>[<span class="extype" name="akka.http.scaladsl.model.HttpRequest">HttpRequest</span>] with <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#silhouette.akka.http.package@AkkaHttpRequestPipelineextendsRequestPipeline[akka.http.scaladsl.model.HttpRequest]withProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">The request pipeline implementation based on the <code>akka.http.scaladsl.model.HttpRequest</code>.</p><div class="fullcomment"><div class="comment cmt"><p>The request pipeline implementation based on the <code>akka.http.scaladsl.model.HttpRequest</code>.
+</p></div><dl class="paramcmts block"><dt class="param">request</dt><dd class="cmt"><p>The request this pipeline handles.</p></dd><dt class="param">sessionName</dt><dd class="cmt"><p>The cookie name where store session</p></dd></dl></div>
+    </li><li name="silhouette.akka.http.AkkaHttpResponsePipeline" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="AkkaHttpResponsePipelineextendsResponsePipeline[akka.http.scaladsl.model.HttpResponse]withProductwithSerializable"></a>
+      <a id="AkkaHttpResponsePipeline:AkkaHttpResponsePipeline"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="AkkaHttpResponsePipeline.html"><span class="name">AkkaHttpResponsePipeline</span></a><span class="params">(<span name="response">response: <span class="extype" name="akka.http.scaladsl.model.HttpResponse">HttpResponse</span></span>, <span name="sessionName">sessionName: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result"> extends <a href="http://api.silhouette.mohiva.com/1.0.0-SNAPSHOT/index.html#silhouette.http.ResponsePipeline" class="extype" target="_top">ResponsePipeline</a>[<span class="extype" name="akka.http.scaladsl.model.HttpResponse">HttpResponse</span>] with <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#silhouette.akka.http.package@AkkaHttpResponsePipelineextendsResponsePipeline[akka.http.scaladsl.model.HttpResponse]withProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">The response pipeline implementation based on the <code>akka.http.scaladsl.model.HttpResponse</code>.</p><div class="fullcomment"><div class="comment cmt"><p>The response pipeline implementation based on the <code>akka.http.scaladsl.model.HttpResponse</code>.
+</p></div><dl class="paramcmts block"><dt class="param">response</dt><dd class="cmt"><p>The response this pipeline handles.</p></dd><dt class="param">sessionName</dt><dd class="cmt"><p>The cookie name where store session</p></dd></dl></div>
+    </li></ol>
+            </div>
+
+        
+
+        <div id="values" class="values members">
+              <h3>Value Members</h3>
+              <ol><li name="silhouette.akka.http.conversions" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="conversions"></a>
+      <a id="conversions:conversions"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="conversions/package.html"><span class="name">conversions</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#silhouette.akka.http.package@conversions" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="silhouette.akka.http.session" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="session"></a>
+      <a id="session:session"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="session/package.html"><span class="name">session</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#silhouette.akka.http.package@session" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li></ol>
+            </div>
+
+        
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+
+
+    </body>
+      </html>
