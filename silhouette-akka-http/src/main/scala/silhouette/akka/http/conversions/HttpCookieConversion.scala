@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 Mohiva Organisation (license at mohiva dot com)
+ * Copyright 2016 Mohiva Organisation (license at mohiva dot com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,12 +19,13 @@ import akka.http.scaladsl.model.headers.HttpCookie
 import silhouette.http.Cookie
 
 /**
- * Utility object that convert a `silhouette.http.Cookie` to an `akka.http.scaladsl.model.headers.HttpCookie` and vice versa
+ * Utility object that convert a [[silhouette.http.Cookie]] to an [[akka.http.scaladsl.model.headers.HttpCookie]]
+ * and vice versa.
  */
 object HttpCookieConversion {
 
   /**
-   * Converts a `silhouette.http.Cookie` to an `akka.http.scaladsl.model.headers.HttpCookie`
+   * Converts a [[silhouette.http.Cookie]] to an [[akka.http.scaladsl.model.headers.HttpCookie]].
    */
   val cookieToHttpCookie: Cookie => HttpCookie = cookie => HttpCookie(
     name = cookie.name,
@@ -39,7 +40,7 @@ object HttpCookieConversion {
   )
 
   /**
-   * Converts an `akka.http.scaladsl.model.headers.HttpCookie` to an `silhouette.http.Cookie`
+   * Converts an [[akka.http.scaladsl.model.headers.HttpCookie]] to an [[silhouette.http.Cookie]].
    */
   val httpCookieToCookie: HttpCookie => Cookie = httpCookie => Cookie(
     name = httpCookie.name,
@@ -50,5 +51,4 @@ object HttpCookieConversion {
     secure = httpCookie.secure,
     httpOnly = httpCookie.httpOnly
   )
-
 }

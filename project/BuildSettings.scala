@@ -110,6 +110,8 @@ object Doc extends AutoPlugin {
     apiMappings ++= {
       implicit val cp = (fullClasspath in Compile).value
       Map(
+        jarFor("com.typesafe.akka", "akka-http-core") -> url(s"http://doc.akka.io/api/akka//${Dependencies.Versions.akka}/"),
+        jarFor("com.mohiva", "silhouette") -> url(s"http://api.silhouette.mohiva.com/${Dependencies.Versions.silhouette}/"),
         scalaInstance.value.libraryJar -> url(s"http://www.scala-lang.org/api/${scalaVersion.value}/")
       )
     }

@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 Mohiva Organisation (license at mohiva dot com)
+ * Copyright 2016 Mohiva Organisation (license at mohiva dot com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,35 +20,55 @@ import silhouette.http.Cookie
 import scala.util.Try
 
 /**
- * Represents a session data
+ * Represents session data.
  *
- * @param sessionName the cookie name where session is store
- * @param data the data to store inside session
+ * @param sessionName The cookie name where session is stored.
+ * @param data The data to store inside the session.
  */
 case class Session(
   sessionName: String,
   data: Map[String, String]
 )
 
+/**
+ * The companion object.
+ */
 object Session {
+
+  /**
+   * Extract [[Session]] from a [[silhouette.http.Cookie]].
+   *
+   * @param cookie The cookie where the session is stored.
+   * @return A [[scala.util.Success]] with [[Session]] or [[scala.util.Failure]] if is not possible extract a [[Session]].
+   */
+  def fromCookie(cookie: Cookie): Try[Session] = deserialize(cookie.value).map(v => Session(cookie.name, v))
+
+  /**
+   * Transform [[Session]] to a [[silhouette.http.Cookie]].
+   *
+   * @param session The session to transform.
+   * @return A [[silhouette.http.Cookie]] with session serialized as value.
+   */
+  def asCookie(session: Session): Cookie = Cookie(name = session.sessionName, value = serialize(session.data))
+
+  /**
+   * Serializes the session data into an URL encoded string.
+   *
+   * @param data The session data to serialize.
+   * @return An URL encoded string representation of the session data.
+   */
+  protected[session] def serialize(data: Map[String, String]): String =
+    data.map(p => s"${urlEncode(p._1)}=${urlEncode(p._2)}").mkString("&")
+
+  /**
+   * Deserializes the URL encoded representation of the session data.
+   *
+   * @param data An URL encoded string representation of the session data.
+   * @return The session data.
+   */
+  protected[session] def deserialize(data: String): Try[Map[String, String]] =
+    Try(data.split("&").map(_.split("=", 2)).map(p => urlDecode(p(0)) -> urlDecode(p(1))).toSeq).map(_.toMap)
+
   private def urlEncode(s: String): String = URLEncoder.encode(s, "UTF-8")
   private def urlDecode(s: String): String = URLDecoder.decode(s, "UTF-8")
-
-  /**
-   * Extract [[Session]] from a `silhouette.http.Cookie`
-   * @param c The cookie where the session is store
-   * @return a [[scala.util.Success]] with [[Session]] or [[scala.util.Failure]] if is not possible extract a [[Session]]
-   */
-  def fromCookie(c: Cookie): Try[Session] = Session.deserialize(c.value).map(v => Session(c.name, v.toMap))
-  /**
-   * Transform [[Session]] to a `silhouette.http.Cookie`
-   * @param s The session to transform
-   * @return a `silhouette.http.Cookie` with session serialized as value
-   */
-  def asCookie(s: Session): Cookie = Cookie(name = s.sessionName, value = Session.serialize(s.data))
-
-  protected[session] def serialize(t: Map[String, String]): String = t.map(p => s"${urlEncode(p._1)}=${urlEncode(p._2)}").mkString("&")
-  protected[session] def deserialize(r: String): Try[Map[String, String]] =
-    Try(r.split("&").map(_.split("=", 2)).map(p => urlDecode(p(0)) -> urlDecode(p(1))).toSeq).map(_.toMap)
-
 }
