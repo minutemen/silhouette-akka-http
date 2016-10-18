@@ -1,7 +1,7 @@
 import Dependencies._
 
 libraryDependencies ++= Seq(
-  Library.silhouette,
+  Library.Silhouette.core,
   Library.akkaHttp,
   Library.Specs2.core % "test"
 )

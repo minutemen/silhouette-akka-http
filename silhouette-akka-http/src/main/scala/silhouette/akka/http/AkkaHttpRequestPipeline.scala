@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 Mohiva Organisation (license at mohiva dot com)
+ * Copyright 2016 Mohiva Organisation (license at mohiva dot com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,20 +15,20 @@
  */
 package silhouette.akka.http
 
+import akka.http.scaladsl.model.headers.{ RawHeader, Cookie => AkkaCookie }
 import akka.http.scaladsl.model.{ HttpHeader, HttpRequest, Uri }
-import akka.http.scaladsl.model.headers.RawHeader
-import silhouette.http.{ Cookie, RequestBodyExtractor, RequestPipeline }
 import silhouette.akka.http.conversions.HttpCookieConversion._
 import silhouette.akka.http.session.Session
+import silhouette.http.{ Cookie, RequestBodyExtractor, RequestPipeline }
 
 /**
- * The request pipeline implementation based on the `akka.http.scaladsl.model.HttpRequest`.
+ * The request pipeline implementation based on the [[akka.http.scaladsl.model.HttpRequest]].
  *
  * @param request The request this pipeline handles.
- * @param sessionName The cookie name where store session
+ * @param sessionName The cookie name where store session.
  */
 case class AkkaHttpRequestPipeline(request: HttpRequest, sessionName: String) extends RequestPipeline[HttpRequest] {
-  private def isCookie: HttpHeader => Boolean = _.is(akka.http.scaladsl.model.headers.Cookie.lowercaseName)
+  private def isCookie: HttpHeader => Boolean = _.is(AkkaCookie.lowercaseName)
 
   /**
    * Gets all headers.
@@ -97,8 +97,8 @@ case class AkkaHttpRequestPipeline(request: HttpRequest, sessionName: String) ex
    */
   override def withHeaders(headers: (String, String)*): RequestPipeline[HttpRequest] = {
     val newHeaders = headers.map(p => RawHeader(name = p._1, value = p._2))
-    val newReq = request.copy(headers = request.headers.filter(h => !headers.exists(p => h.is(p._1.toLowerCase))) ++ newHeaders)
-    AkkaHttpRequestPipeline(newReq, sessionName)
+    val newRequest = request.copy(headers = request.headers.filter(h => !headers.exists(p => h.is(p._1.toLowerCase))) ++ newHeaders)
+    copy(newRequest, sessionName)
   }
 
   /**
@@ -162,8 +162,13 @@ case class AkkaHttpRequestPipeline(request: HttpRequest, sessionName: String) ex
       case (c, acc) if acc.exists(_.name == c.name) => acc
       case (c, acc)                                 => c :: acc
     }
-    val newCookie = request.cookies.filter(c => !httpCookies.exists(_.name == c.name)).map(_.toCookie()) ++ httpCookies.map(cookieToHttpCookie)
-    copy(request = request.withHeaders(request.headers.filterNot(isCookie) ++ newCookie.map(c => akka.http.scaladsl.model.headers.`Cookie`(c.pair()))))
+    val newCookies = (httpCookies.map(cookieToHttpCookie) ++
+      request.cookies
+      .filter(c => !httpCookies.exists(_.name == c.name))
+      .map(_.toCookie())
+    ).map(c => AkkaCookie(c.pair()))
+
+    copy(request = request.withHeaders(request.headers.filterNot(isCookie) ++ newCookies))
   }
 
   /**
@@ -171,7 +176,8 @@ case class AkkaHttpRequestPipeline(request: HttpRequest, sessionName: String) ex
    *
    * @return The session data.
    */
-  override def session: Map[String, String] = cookies.find(_.name == sessionName).flatMap(c => Session.fromCookie(c).map(_.data).toOption).getOrElse(Map())
+  override def session: Map[String, String] =
+    cookies.find(_.name == sessionName).flatMap(c => Session.fromCookie(c).map(_.data).toOption).getOrElse(Map())
 
   /**
    * Creates a new request pipeline with the given session data.

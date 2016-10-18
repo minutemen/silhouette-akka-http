@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 Mohiva Organisation (license at mohiva dot com)
+ * Copyright 2016 Mohiva Organisation (license at mohiva dot com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,23 +20,26 @@ object Dependencies {
   object Versions {
     val crossScala = Seq("2.11.8")
     val scalaVersion = crossScala.head
+    val silhouette = "1.0.0-SNAPSHOT"
+    val specs2 = "3.6.6"
+    val akka = "2.4.10"
   }
 
   val resolvers = Seq(
-    Resolver.sonatypeRepo("snapshots"),
-    "Atlassian Releases" at "https://maven.atlassian.com/public/"
+    Resolver.sonatypeRepo("snapshots")
   )
 
   object Library {
 
-    val silhouette = "com.mohiva" %% "silhouette" % "1.0.0-SNAPSHOT"
+    object Silhouette {
+      val core = "com.mohiva" %% "silhouette" % Versions.silhouette
+    }
 
     object Specs2 {
-      private val version = "3.6.5"
-      val core = "org.specs2" %% "specs2-core" % version
-      val matcherExtra = "org.specs2" %% "specs2-matcher-extra" % version
-      val mock = "org.specs2" %% "specs2-mock" % version
+      val core = "org.specs2" %% "specs2-core" % Versions.specs2
+      val matcherExtra = "org.specs2" %% "specs2-matcher-extra" % Versions.specs2
+      val mock = "org.specs2" %% "specs2-mock" % Versions.specs2
     }
-    val akkaHttp = "com.typesafe.akka" %% "akka-http-core" % "2.4.10"
+    val akkaHttp = "com.typesafe.akka" %% "akka-http-core" % Versions.akka
   }
 }

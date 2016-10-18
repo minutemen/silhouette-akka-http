@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 Mohiva Organisation (license at mohiva dot com)
+ * Copyright 2016 Mohiva Organisation (license at mohiva dot com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,13 +22,12 @@ import silhouette.akka.http.session.Session
 import silhouette.http.{ Cookie, ResponsePipeline }
 
 /**
- * The response pipeline implementation based on the `akka.http.scaladsl.model.HttpResponse`.
+ * The response pipeline implementation based on the [[akka.http.scaladsl.model.HttpResponse]].
  *
  * @param response The response this pipeline handles.
- * @param sessionName The cookie name where store session
+ * @param sessionName The cookie name where store session.
  */
 case class AkkaHttpResponsePipeline(response: HttpResponse, sessionName: String) extends ResponsePipeline[HttpResponse] {
-
   private def isCookie: HttpHeader => Boolean = _.is(`Set-Cookie`.lowercaseName)
 
   /**
@@ -98,8 +97,8 @@ case class AkkaHttpResponsePipeline(response: HttpResponse, sessionName: String)
    */
   override def withHeaders(headers: (String, String)*): ResponsePipeline[HttpResponse] = {
     val newHeaders = headers.map(p => RawHeader(name = p._1, value = p._2))
-    val newRes = response.copy(headers = response.headers.filter(h => !headers.exists(p => h.is(p._1.toLowerCase))) ++ newHeaders)
-    copy(response = newRes)
+    val newResponse = response.copy(headers = response.headers.filter(h => !headers.exists(p => h.is(p._1.toLowerCase))) ++ newHeaders)
+    copy(response = newResponse)
   }
 
   /**
@@ -167,8 +166,11 @@ case class AkkaHttpResponsePipeline(response: HttpResponse, sessionName: String)
       case (c, acc) if acc.exists(_.name == c.name) => acc
       case (c, acc)                                 => c :: acc
     }
-    val newCookie = (this.cookies.filter(c => !httpCookies.exists(_.name == c.name)) ++ httpCookies).map(cookieToHttpCookie)
-    copy(response = response.withHeaders(response.headers.filterNot(isCookie) ++ newCookie.map(c => `Set-Cookie`(c))))
+    val newCookies = (this.cookies.filter(c => !httpCookies.exists(_.name == c.name)) ++ httpCookies)
+      .map(cookieToHttpCookie)
+      .map(c => `Set-Cookie`(c))
+
+    copy(response = response.withHeaders(response.headers.filterNot(isCookie) ++ newCookies))
   }
 
   /**
@@ -176,7 +178,8 @@ case class AkkaHttpResponsePipeline(response: HttpResponse, sessionName: String)
    *
    * @return The session data.
    */
-  override def session: Map[String, String] = cookies.find(_.name == sessionName).flatMap(c => Session.fromCookie(c).map(_.data).toOption).getOrElse(Map())
+  override def session: Map[String, String] =
+    cookies.find(_.name == sessionName).flatMap(c => Session.fromCookie(c).map(_.data).toOption).getOrElse(Map())
 
   /**
    * Creates a new response pipeline with the given session data.
