@@ -51,7 +51,8 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>The companion object.
+</p></div><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Serializable" class="extype" target="_top">Serializable</a>, <span class="extype" name="java.io.Serializable">Serializable</span>, <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a>, <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Any" class="extype" target="_top">Any</a></div>
         </div></div>
@@ -148,7 +149,7 @@
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="silhouette.akka.http.session.Session#asCookie" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="asCookie(s:silhouette.akka.http.session.Session):silhouette.http.Cookie"></a>
+      <a id="asCookie(session:silhouette.akka.http.session.Session):silhouette.http.Cookie"></a>
       <a id="asCookie(Session):Cookie"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -156,14 +157,15 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">asCookie</span><span class="params">(<span name="s">s: <a href="Session.html" class="extype" name="silhouette.akka.http.session.Session">Session</a></span>)</span><span class="result">: <a href="http://api.silhouette.mohiva.com/1.0.0-SNAPSHOT/index.html#silhouette.http.Cookie" class="extype" target="_top">Cookie</a></span>
+        <span class="name">asCookie</span><span class="params">(<span name="session">session: <a href="Session.html" class="extype" name="silhouette.akka.http.session.Session">Session</a></span>)</span><span class="result">: <a href="http://api.silhouette.mohiva.com/1.0.0-SNAPSHOT/index.html#silhouette.http.Cookie" class="extype" target="_top">Cookie</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#silhouette.akka.http.session.Session$@asCookie(s:silhouette.akka.http.session.Session):silhouette.http.Cookie" title="Permalink" target="_top">
+      <a href="../../../../index.html#silhouette.akka.http.session.Session$@asCookie(session:silhouette.akka.http.session.Session):silhouette.http.Cookie" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Transform <a href="Session.html" class="extype" name="silhouette.akka.http.session.Session">Session</a> to a <code>silhouette.http.Cookie</code></p><div class="fullcomment"><div class="comment cmt"><p>Transform <a href="Session.html" class="extype" name="silhouette.akka.http.session.Session">Session</a> to a <code>silhouette.http.Cookie</code></p></div><dl class="paramcmts block"><dt class="param">s</dt><dd class="cmt"><p>The session to transform</p></dd><dt>returns</dt><dd class="cmt"><p>a <code>silhouette.http.Cookie</code> with session serialized as value</p></dd></dl></div>
+      <p class="shortcomment cmt">Transform <a href="Session.html" class="extype" name="silhouette.akka.http.session.Session">Session</a> to a <a href="http://api.silhouette.mohiva.com/1.0.0-SNAPSHOT/index.html#silhouette.http.Cookie" class="extype" target="_top">silhouette.http.Cookie</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Transform <a href="Session.html" class="extype" name="silhouette.akka.http.session.Session">Session</a> to a <a href="http://api.silhouette.mohiva.com/1.0.0-SNAPSHOT/index.html#silhouette.http.Cookie" class="extype" target="_top">silhouette.http.Cookie</a>.
+</p></div><dl class="paramcmts block"><dt class="param">session</dt><dd class="cmt"><p>The session to transform.</p></dd><dt>returns</dt><dd class="cmt"><p>A <a href="http://api.silhouette.mohiva.com/1.0.0-SNAPSHOT/index.html#silhouette.http.Cookie" class="extype" target="_top">silhouette.http.Cookie</a> with session serialized as value.</p></dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
@@ -205,7 +207,7 @@
               
         </dd></dl></div>
     </li><li name="silhouette.akka.http.session.Session#deserialize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="deserialize(r:String):scala.util.Try[Map[String,String]]"></a>
+      <a id="deserialize(data:String):scala.util.Try[Map[String,String]]"></a>
       <a id="deserialize(String):Try[Map[String,String]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -213,14 +215,15 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">deserialize</span><span class="params">(<span name="r">r: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.util.Try" class="extype" target="_top">Try</a>[<span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>]]</span>
+        <span class="name">deserialize</span><span class="params">(<span name="data">data: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.util.Try" class="extype" target="_top">Try</a>[<span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>]]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#silhouette.akka.http.session.Session$@deserialize(r:String):scala.util.Try[Map[String,String]]" title="Permalink" target="_top">
+      <a href="../../../../index.html#silhouette.akka.http.session.Session$@deserialize(data:String):scala.util.Try[Map[String,String]]" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="package.html" class="extype" name="silhouette.akka.http.session">silhouette.akka.http.session</a>] </dd></dl></div>
+      <p class="shortcomment cmt">Deserializes the URL encoded representation of the session data.</p><div class="fullcomment"><div class="comment cmt"><p>Deserializes the URL encoded representation of the session data.
+</p></div><dl class="paramcmts block"><dt class="param">data</dt><dd class="cmt"><p>An URL encoded string representation of the session data.</p></dd><dt>returns</dt><dd class="cmt"><p>The session data.</p></dd></dl><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="package.html" class="extype" name="silhouette.akka.http.session">silhouette.akka.http.session</a>] </dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -279,7 +282,7 @@
               
         </dd></dl></div>
     </li><li name="silhouette.akka.http.session.Session#fromCookie" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="fromCookie(c:silhouette.http.Cookie):scala.util.Try[silhouette.akka.http.session.Session]"></a>
+      <a id="fromCookie(cookie:silhouette.http.Cookie):scala.util.Try[silhouette.akka.http.session.Session]"></a>
       <a id="fromCookie(Cookie):Try[Session]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -287,14 +290,15 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">fromCookie</span><span class="params">(<span name="c">c: <a href="http://api.silhouette.mohiva.com/1.0.0-SNAPSHOT/index.html#silhouette.http.Cookie" class="extype" target="_top">Cookie</a></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.util.Try" class="extype" target="_top">Try</a>[<a href="Session.html" class="extype" name="silhouette.akka.http.session.Session">Session</a>]</span>
+        <span class="name">fromCookie</span><span class="params">(<span name="cookie">cookie: <a href="http://api.silhouette.mohiva.com/1.0.0-SNAPSHOT/index.html#silhouette.http.Cookie" class="extype" target="_top">Cookie</a></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.util.Try" class="extype" target="_top">Try</a>[<a href="Session.html" class="extype" name="silhouette.akka.http.session.Session">Session</a>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#silhouette.akka.http.session.Session$@fromCookie(c:silhouette.http.Cookie):scala.util.Try[silhouette.akka.http.session.Session]" title="Permalink" target="_top">
+      <a href="../../../../index.html#silhouette.akka.http.session.Session$@fromCookie(cookie:silhouette.http.Cookie):scala.util.Try[silhouette.akka.http.session.Session]" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Extract <a href="Session.html" class="extype" name="silhouette.akka.http.session.Session">Session</a> from a <code>silhouette.http.Cookie</code></p><div class="fullcomment"><div class="comment cmt"><p>Extract <a href="Session.html" class="extype" name="silhouette.akka.http.session.Session">Session</a> from a <code>silhouette.http.Cookie</code></p></div><dl class="paramcmts block"><dt class="param">c</dt><dd class="cmt"><p>The cookie where the session is store</p></dd><dt>returns</dt><dd class="cmt"><p>a <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.util.Success" class="extype" target="_top">scala.util.Success</a> with <a href="Session.html" class="extype" name="silhouette.akka.http.session.Session">Session</a> or <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.util.Failure" class="extype" target="_top">scala.util.Failure</a> if is not possible extract a <a href="Session.html" class="extype" name="silhouette.akka.http.session.Session">Session</a></p></dd></dl></div>
+      <p class="shortcomment cmt">Extract <a href="Session.html" class="extype" name="silhouette.akka.http.session.Session">Session</a> from a <a href="http://api.silhouette.mohiva.com/1.0.0-SNAPSHOT/index.html#silhouette.http.Cookie" class="extype" target="_top">silhouette.http.Cookie</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Extract <a href="Session.html" class="extype" name="silhouette.akka.http.session.Session">Session</a> from a <a href="http://api.silhouette.mohiva.com/1.0.0-SNAPSHOT/index.html#silhouette.http.Cookie" class="extype" target="_top">silhouette.http.Cookie</a>.
+</p></div><dl class="paramcmts block"><dt class="param">cookie</dt><dd class="cmt"><p>The cookie where the session is stored.</p></dd><dt>returns</dt><dd class="cmt"><p>A <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.util.Success" class="extype" target="_top">scala.util.Success</a> with <a href="Session.html" class="extype" name="silhouette.akka.http.session.Session">Session</a> or <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.util.Failure" class="extype" target="_top">scala.util.Failure</a> if is not possible extract a <a href="Session.html" class="extype" name="silhouette.akka.http.session.Session">Session</a>.</p></dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <a id="getClass():Class[_]"></a>
@@ -398,7 +402,7 @@
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="silhouette.akka.http.session.Session#serialize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="serialize(t:Map[String,String]):String"></a>
+      <a id="serialize(data:Map[String,String]):String"></a>
       <a id="serialize(Map[String,String]):String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -406,14 +410,15 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">serialize</span><span class="params">(<span name="t">t: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+        <span class="name">serialize</span><span class="params">(<span name="data">data: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#silhouette.akka.http.session.Session$@serialize(t:Map[String,String]):String" title="Permalink" target="_top">
+      <a href="../../../../index.html#silhouette.akka.http.session.Session$@serialize(data:Map[String,String]):String" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="package.html" class="extype" name="silhouette.akka.http.session">silhouette.akka.http.session</a>] </dd></dl></div>
+      <p class="shortcomment cmt">Serializes the session data into an URL encoded string.</p><div class="fullcomment"><div class="comment cmt"><p>Serializes the session data into an URL encoded string.
+</p></div><dl class="paramcmts block"><dt class="param">data</dt><dd class="cmt"><p>The session data to serialize.</p></dd><dt>returns</dt><dd class="cmt"><p>An URL encoded string representation of the session data.</p></dd></dl><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="package.html" class="extype" name="silhouette.akka.http.session">silhouette.akka.http.session</a>] </dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
