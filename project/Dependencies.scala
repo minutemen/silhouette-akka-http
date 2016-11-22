@@ -22,7 +22,7 @@ object Dependencies {
   object Version {
     val silhouette = "1.0.0-SNAPSHOT"
     val specs2 = "3.8.6"
-    val akka = "2.4.11"
+    val akka = "10.0.0"
   }
 
   val resolvers = Seq(
