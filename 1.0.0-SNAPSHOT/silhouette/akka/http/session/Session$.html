@@ -157,15 +157,15 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">asCookie</span><span class="params">(<span name="session">session: <a href="Session.html" class="extype" name="silhouette.akka.http.session.Session">Session</a></span>)</span><span class="result">: <a href="http://api.silhouette.mohiva.com/1.0.0-SNAPSHOT/index.html#silhouette.http.Cookie" class="extype" target="_top">Cookie</a></span>
+        <span class="name">asCookie</span><span class="params">(<span name="session">session: <a href="Session.html" class="extype" name="silhouette.akka.http.session.Session">Session</a></span>)</span><span class="result">: <a href="http://api.silhouette.rocks/1.0.0-SNAPSHOT/index.html#silhouette.http.Cookie" class="extype" target="_top">Cookie</a></span>
       </span>
       </h4><span class="permalink">
       <a href="../../../../index.html#silhouette.akka.http.session.Session$@asCookie(session:silhouette.akka.http.session.Session):silhouette.http.Cookie" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Transform <a href="Session.html" class="extype" name="silhouette.akka.http.session.Session">Session</a> to a <a href="http://api.silhouette.mohiva.com/1.0.0-SNAPSHOT/index.html#silhouette.http.Cookie" class="extype" target="_top">silhouette.http.Cookie</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Transform <a href="Session.html" class="extype" name="silhouette.akka.http.session.Session">Session</a> to a <a href="http://api.silhouette.mohiva.com/1.0.0-SNAPSHOT/index.html#silhouette.http.Cookie" class="extype" target="_top">silhouette.http.Cookie</a>.
-</p></div><dl class="paramcmts block"><dt class="param">session</dt><dd class="cmt"><p>The session to transform.</p></dd><dt>returns</dt><dd class="cmt"><p>A <a href="http://api.silhouette.mohiva.com/1.0.0-SNAPSHOT/index.html#silhouette.http.Cookie" class="extype" target="_top">silhouette.http.Cookie</a> with session serialized as value.</p></dd></dl></div>
+      <p class="shortcomment cmt">Transform <a href="Session.html" class="extype" name="silhouette.akka.http.session.Session">Session</a> to a <a href="http://api.silhouette.rocks/1.0.0-SNAPSHOT/index.html#silhouette.http.Cookie" class="extype" target="_top">silhouette.http.Cookie</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Transform <a href="Session.html" class="extype" name="silhouette.akka.http.session.Session">Session</a> to a <a href="http://api.silhouette.rocks/1.0.0-SNAPSHOT/index.html#silhouette.http.Cookie" class="extype" target="_top">silhouette.http.Cookie</a>.
+</p></div><dl class="paramcmts block"><dt class="param">session</dt><dd class="cmt"><p>The session to transform.</p></dd><dt>returns</dt><dd class="cmt"><p>A <a href="http://api.silhouette.rocks/1.0.0-SNAPSHOT/index.html#silhouette.http.Cookie" class="extype" target="_top">silhouette.http.Cookie</a> with session serialized as value.</p></dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
@@ -290,15 +290,16 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">fromCookie</span><span class="params">(<span name="cookie">cookie: <a href="http://api.silhouette.mohiva.com/1.0.0-SNAPSHOT/index.html#silhouette.http.Cookie" class="extype" target="_top">Cookie</a></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.util.Try" class="extype" target="_top">Try</a>[<a href="Session.html" class="extype" name="silhouette.akka.http.session.Session">Session</a>]</span>
+        <span class="name">fromCookie</span><span class="params">(<span name="cookie">cookie: <a href="http://api.silhouette.rocks/1.0.0-SNAPSHOT/index.html#silhouette.http.Cookie" class="extype" target="_top">Cookie</a></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.util.Try" class="extype" target="_top">Try</a>[<a href="Session.html" class="extype" name="silhouette.akka.http.session.Session">Session</a>]</span>
       </span>
       </h4><span class="permalink">
       <a href="../../../../index.html#silhouette.akka.http.session.Session$@fromCookie(cookie:silhouette.http.Cookie):scala.util.Try[silhouette.akka.http.session.Session]" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Extract <a href="Session.html" class="extype" name="silhouette.akka.http.session.Session">Session</a> from a <a href="http://api.silhouette.mohiva.com/1.0.0-SNAPSHOT/index.html#silhouette.http.Cookie" class="extype" target="_top">silhouette.http.Cookie</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Extract <a href="Session.html" class="extype" name="silhouette.akka.http.session.Session">Session</a> from a <a href="http://api.silhouette.mohiva.com/1.0.0-SNAPSHOT/index.html#silhouette.http.Cookie" class="extype" target="_top">silhouette.http.Cookie</a>.
-</p></div><dl class="paramcmts block"><dt class="param">cookie</dt><dd class="cmt"><p>The cookie where the session is stored.</p></dd><dt>returns</dt><dd class="cmt"><p>A <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.util.Success" class="extype" target="_top">scala.util.Success</a> with <a href="Session.html" class="extype" name="silhouette.akka.http.session.Session">Session</a> or <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.util.Failure" class="extype" target="_top">scala.util.Failure</a> if is not possible extract a <a href="Session.html" class="extype" name="silhouette.akka.http.session.Session">Session</a>.</p></dd></dl></div>
+      <p class="shortcomment cmt">Extract <a href="Session.html" class="extype" name="silhouette.akka.http.session.Session">Session</a> from a <a href="http://api.silhouette.rocks/1.0.0-SNAPSHOT/index.html#silhouette.http.Cookie" class="extype" target="_top">silhouette.http.Cookie</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Extract <a href="Session.html" class="extype" name="silhouette.akka.http.session.Session">Session</a> from a <a href="http://api.silhouette.rocks/1.0.0-SNAPSHOT/index.html#silhouette.http.Cookie" class="extype" target="_top">silhouette.http.Cookie</a>.
+</p></div><dl class="paramcmts block"><dt class="param">cookie</dt><dd class="cmt"><p>The cookie where the session is stored.</p></dd><dt>returns</dt><dd class="cmt"><p>A <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.util.Success" class="extype" target="_top">scala.util.Success</a> with <a href="Session.html" class="extype" name="silhouette.akka.http.session.Session">Session</a> or <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.util.Failure" class="extype" target="_top">scala.util.Failure</a> if is not possible
+        extract a <a href="Session.html" class="extype" name="silhouette.akka.http.session.Session">Session</a>.</p></dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <a id="getClass():Class[_]"></a>
