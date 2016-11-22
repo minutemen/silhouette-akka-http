@@ -1,12 +1,14 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # Updates the API-Doc in the 'gh-pages' branch.
 #
-# Copyright 2016 Mohiva Organisation (license at mohiva dot com)
+# Licensed to the Minutemen Group under one or more contributor license
+# agreements. See the COPYRIGHT file distributed with this work for
+# additional information regarding copyright ownership.
 #
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
+# Licensed under the Apache License, Version 2.0 (the "License"); you
+# may not use this file except in compliance with the License. You may
+# obtain a copy of the License at
 #
 #     http://www.apache.org/licenses/LICENSE-2.0
 #
@@ -18,12 +20,18 @@
 #
 set -o nounset -o errexit
 
-if [ "$TRAVIS_REPO_SLUG" == "mohiva/silhouette-akka-http" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ]; then
+SCRIPTS_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+source "$SCRIPTS_DIR/vars.sh"
+
+if [ "$TRAVIS_REPO_SLUG" == "minutemen/silhouette-akka-http" ] &&
+  [ "$TRAVIS_PULL_REQUEST" == "false" ] &&
+  [ "$TRAVIS_BRANCH" == "master" ] &&
+  [ "$TRAVIS_SCALA_VERSION" == "$SCALA_VERSION" ]; then
+
   echo ""
   echo "Starting API-Doc update process"
 
-  SCRIPTS_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-  GH_PAGES_DIR="$HOME/.sbt/ghpages/com.mohiva/root"
+  GH_PAGES_DIR="$HOME/.sbt/ghpages/group.minutemen/root"
   ENCRYPTED_KEY_VAR="encrypted_${ENCRYPTION_ID}_key"
   ENCRYPTED_IV_VAR="encrypted_${ENCRYPTION_ID}_iv"
   ENCRYPTED_KEY_FILE="${SCRIPTS_DIR}/api-doc.key.enc"
@@ -48,7 +56,7 @@ if [ "$TRAVIS_REPO_SLUG" == "mohiva/silhouette-akka-http" ] && [ "$TRAVIS_PULL_R
   git config --global user.name "travis-ci"
   git config --global push.default simple
 
-  scripts/sbt ghpages-push-site
+  ${SCRIPTS_DIR}/sbt.sh ghpages-push-site
 
   echo ""
   echo "Finished API-Doc update process"

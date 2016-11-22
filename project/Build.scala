@@ -1,9 +1,11 @@
 /**
- * Copyright 2016 Mohiva Organisation (license at mohiva dot com)
+ * Licensed to the Minutemen Group under one or more contributor license
+ * agreements. See the COPYRIGHT file distributed with this work for
+ * additional information regarding copyright ownership.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you
+ * may not use this file except in compliance with the License. You may
+ * obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
@@ -17,6 +19,7 @@ import sbt.Keys._
 import sbt._
 
 object Build extends Build {
+  lazy val buildVersions = taskKey[Unit]("Show some build versions")
 
   val silhouetteAkkaHttp = Project(
     id = "silhouette-akka-http",
@@ -32,9 +35,13 @@ object Build extends Build {
     settings = Defaults.coreDefaultSettings ++
       APIDoc.settings ++
       Seq(
-        publishLocal := {},
-        publishM2 := {},
-        publishArtifact := false
+        publish := {},
+        buildVersions := {
+          // scalastyle:off println
+          println(s"PROJECT_VERSION ${version.value}")
+          println(s"SCALA_VERSION ${scalaVersion.value}")
+          // scalastyle:on println
+        }
       )
   )
 }

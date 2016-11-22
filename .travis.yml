@@ -1,26 +1,25 @@
 sudo: false
 language: scala
 scala:
-  - 2.11.8
+- 2.11.8
 jdk:
-  - oraclejdk8
+- oraclejdk8
 env:
   global:
-  - ENCRYPTION_ID: "e6680d45fecf"
+  - ENCRYPTION_ID: e6680d45fecf
+  - secure: mzu3g9EQRTqHuA67OSE96n51g1Ojdp3gfITtErFLEDZjA+lnJtLpmVLZFl3boR759eadnZri4yTImGeIgbjvcQ++RhwJFcmiU15O2DXQKUvIdUf5ka556gS7bZRe/woThH1vy5IfvvdCxqcg7D4fAxcfIhYkN+Z6DckpKZXllHi9vNfpUCLnCC4xWN1jnHDYGSg4Ko8nXBrXyUiqgQO8zYELdqfHi1xmoA3+G5XomVbWZRl5yr0Xr7gt9LnU65Ad37qG4v65nSQ8vN4J+f7j7m8u+9GwakHZdGLy9u4qH5AcWLjos85gy8YebVrLlUN+GSjCLV8Q0pezm/PD4w4ISj3MnYE+VJRpiIM5siNDCdNvX64NU/8ezlDu+nULXzBvoaxiAY2v/9oH+4gJ7PkQZTPPHCd31xAVZKcsEuLBkOZIvVNgptxWwrh0cfRP1DdIBRZOFkQp07tGTfxJtfG+E1GKW87WzJMOVPGAREajdynPkbqB6kMjOLHxiu42MaK4XlEKtb/prAgTCawRlKdzEzCIjxTvypsy1hF9H9lz/+YZ3W6be+oP7xYd3ezusw9PUNf7wYsnhz73KGVYw1T7gwLuhO3Fe724HNDkX0V2lqvEY3FHQ+8x3cBie1MzbP/v1SNaVYakpuGo3w/IVycY9Ynz58i9+aF7v/zkOH9qFBw=
+  - secure: NuXK5G7DAbzWcl96+6xLEs42t8z6TgnChUj1821qmCfBRD8ODZjJNuGk5XCkGQdEl01McYRB0R32u4hY4qSHPk5egP6YL7Tfe4Fcc+22RRoRkoAKorkVyGhkwaJXcB1V5EkA48CYFP651tpTRTydcgh8AJa1cKGfFCjPu9K8W01ASejOfgQv4iFY73sk5mIbOon7eOW3t2RqtLj9+p/NuK+CDbSUv/01Xl5LfQgJ1t0Uxo/efgIo787RxGjQVEDbimgFVQRqdzPxhunscPpHJEhc1mWKCfLJPzz1crEkdZ0cxtTKwxN4A6ncr29amq91JV1PClIKU5muCX3gS9mXgVOOHMC6XxoQuwF+hikwkVkFInPqZedJEFMRx6OmToAUGFxBn/w5mCxBtqSS8pv56l9Tc/oJw+d0KaFvfSeopfjWdZfV8Jhl+7S/vnz97sCaYXXHuwLgNp0sdbltRBlNvUCRxPvVbR8Oe/QqLUfiBQhuLDPv7xIdWxTJvnSzZoKrz9qsAR4nZ2RoNcbpzLx5FY35cLWnHtznM2gdHDH28GarPWkdjVpwuromUVZUBVX4kb1iGUJ1xMxkySDG/8YHHJDzQhk5G8Lzcfm22huE8ut9xTsvJ0t/sJB3OefXK9P3DG8q5kGM2koM2heSo3jHJozgCG7oIElqD+WqXgHb+dk=
 cache:
   directories:
-    # caching scala stuff based on
-    # http://www.scala-sbt.org/0.13/docs/Travis-CI-with-sbt.html#%28Experimental%29+Reusing+Ivy+cache
-    - "$HOME/.ivy2/cache"
-    - "$HOME/.sbt/boot/"
+  - "$HOME/.ivy2/cache"
+  - "$HOME/.sbt/boot/"
 script:
-  - scripts/ci-build
-  # cleanup travis trick from
-  # http://www.scala-sbt.org/0.13/docs/Travis-CI-with-sbt.html#%28Experimental%29+Reusing+Ivy+cache
-  - find $HOME/.sbt -name "*.lock" -delete
-  - find $HOME/.ivy2 -name "ivydata-*.properties" -delete
+- scripts/ci-build.sh
+- find $HOME/.sbt -name "*.lock" -delete
+- find $HOME/.ivy2 -name "ivydata-*.properties" -delete
 after_success:
-  - scripts/api-doc
-  - scripts/coveralls
+- scripts/api-doc.sh
+- scripts/publish.sh
+- scripts/coveralls.sh
 notifications:
   email: false

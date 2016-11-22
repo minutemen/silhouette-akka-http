@@ -1,9 +1,11 @@
 /**
- * Copyright 2016 Mohiva Organisation (license at mohiva dot com)
+ * Licensed to the Minutemen Group under one or more contributor license
+ * agreements. See the COPYRIGHT file distributed with this work for
+ * additional information regarding copyright ownership.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you
+ * may not use this file except in compliance with the License. You may
+ * obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
@@ -13,29 +15,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-import com.typesafe.sbt.SbtGhPages.GhPagesKeys._
-import com.typesafe.sbt.SbtGhPages.ghpages
-import com.typesafe.sbt.SbtGit.GitKeys._
-import com.typesafe.sbt.SbtGit.git
-import com.typesafe.sbt.SbtSite.SiteKeys._
-import com.typesafe.sbt.SbtSite.site
 import sbt.Keys._
 import sbt._
-import sbtunidoc.Plugin._
 
 ////*******************************
 //// Basic settings
 ////*******************************
 object BasicSettings extends AutoPlugin {
-  override def trigger = allRequirements
+  override def trigger: PluginTrigger = allRequirements
 
-  override def projectSettings = Seq(
-    organization := "com.mohiva",
-    version := "1.0.0-SNAPSHOT",
+  override def projectSettings: Seq[Setting[_]] = Seq(
+    organization := "group.minutemen",
     resolvers ++= Dependencies.resolvers,
-    scalaVersion := Dependencies.Versions.scalaVersion,
-    crossScalaVersions := Dependencies.Versions.crossScala,
+    scalaVersion := crossScalaVersions.value.head,
+    crossScalaVersions := Seq("2.11.8"),
     scalacOptions ++= Seq(
       "-deprecation", // Emit warning and location for usages of deprecated APIs.
       "-feature", // Emit warning and location for usages of features that should be imported explicitly.
@@ -81,9 +74,9 @@ object CodeFormatter extends AutoPlugin {
       .setPreference(DanglingCloseParenthesis, Preserve)
   )
 
-  override def trigger = allRequirements
+  override def trigger: PluginTrigger = allRequirements
 
-  override def projectSettings = defaultScalariformSettings ++ prefs ++
+  override def projectSettings: Seq[Setting[_]] = defaultScalariformSettings ++ prefs ++
     inConfig(BuildConfig)(configScalariformSettings) ++
     inConfig(BuildSbtConfig)(configScalariformSettings) ++
     Seq(
@@ -104,14 +97,16 @@ object CodeFormatter extends AutoPlugin {
 ////*******************************
 object Doc extends AutoPlugin {
 
-  override def projectSettings = Seq(
+  override def projectSettings: Seq[Setting[_]] = Seq(
     autoAPIMappings := true,
-    apiURL := Some(url(s"http://api.silhouette-akka-http.mohiva.com/${version.value}/")),
+    apiURL := Some(url(s"http://api.akka-http.silhouette.rocks/${version.value}/")),
     apiMappings ++= {
       implicit val cp = (fullClasspath in Compile).value
       Map(
-        jarFor("com.typesafe.akka", "akka-http-core") -> url(s"http://doc.akka.io/api/akka//${Dependencies.Versions.akka}/"),
-        jarFor("com.mohiva", "silhouette") -> url(s"http://api.silhouette.mohiva.com/${Dependencies.Versions.silhouette}/"),
+        jarFor("com.typesafe.akka", "akka-http-core") ->
+          url(s"http://doc.akka.io/api/akka//${Dependencies.Version.akka}/"),
+        jarFor("group.minutemen", "silhouette") ->
+          url(s"http://api.silhouette.rocks/${Dependencies.Version.silhouette}/"),
         scalaInstance.value.libraryJar -> url(s"http://www.scala-lang.org/api/${scalaVersion.value}/")
       )
     }
@@ -143,6 +138,14 @@ object Doc extends AutoPlugin {
 // @see https://github.com/paypal/horizon/blob/develop/src/main/scala/com/paypal/horizon/BuildUtilities.scala
 object APIDoc {
 
+  import com.typesafe.sbt.SbtGhPages.GhPagesKeys._
+  import com.typesafe.sbt.SbtGhPages.ghpages
+  import com.typesafe.sbt.SbtGit.GitKeys._
+  import com.typesafe.sbt.SbtGit.git
+  import com.typesafe.sbt.SbtSite.SiteKeys._
+  import com.typesafe.sbt.SbtSite.site
+  import sbtunidoc.Plugin._
+
   lazy val files = Seq(file("CNAME"))
 
   lazy val settings = unidocSettings ++
@@ -163,7 +166,7 @@ object APIDoc {
         IO.copy(betterMappings)
         repo
       },
-      git.remoteRepo := "git@github.com:mohiva/silhouette-akka-http.git"
+      git.remoteRepo := "git@github.com:minutemen/silhouette-akka-http.git"
     )
 }
 
@@ -174,12 +177,12 @@ object Publish extends AutoPlugin {
 
   import xerial.sbt.Sonatype._
 
-  override def trigger = allRequirements
+  override def trigger: PluginTrigger = allRequirements
 
   private val pom = {
     <scm>
-      <url>git@github.com:mohiva/silhouette-akka-http.git</url>
-      <connection>scm:git:git@github.com:mohiva/silhouette-akka-http.git</connection>
+      <url>git@github.com:minutemen/silhouette-akka-http.git</url>
+      <connection>scm:git:git@github.com:minutemen/silhouette-akka-http.git</connection>
     </scm>
       <developers>
         <developer>
@@ -195,13 +198,51 @@ object Publish extends AutoPlugin {
       </developers>
   }
 
-  override def projectSettings = sonatypeSettings ++ Seq(
+  override def projectSettings: Seq[Setting[_]] = sonatypeSettings ++ Seq(
     description := "Akka HTTP bindings for the Silhouette authentication library",
-    homepage := Some(url("http://silhouette.mohiva.com/")),
-    licenses := Seq("Apache License" -> url("https://github.com/mohiva/silhouette-akka-http/blob/master/LICENSE")),
+    homepage := Some(url("http://www.silhouette.rocks/")),
+    licenses := Seq("Apache License" -> url("https://github.com/minutemen/silhouette-akka-http/blob/master/LICENSE")),
     publishMavenStyle := true,
     publishArtifact in Test := false,
     pomIncludeRepository := { _ => false },
-    pomExtra := pom
+    pomExtra := pom,
+    credentials ++= (for {
+      username <- Option(System.getenv().get("SONATYPE_USERNAME"))
+      password <- Option(System.getenv().get("SONATYPE_PASSWORD"))
+    } yield Credentials("Sonatype Nexus Repository Manager", "oss.sonatype.org", username, password)).toSeq
+  )
+}
+
+////*******************************
+//// Release settings
+////*******************************
+object Release extends AutoPlugin {
+
+  import sbtrelease.ReleasePlugin.autoImport._
+  import ReleaseTransformations._
+
+  override def trigger: PluginTrigger = allRequirements
+
+  override def projectSettings: Seq[Setting[_]] = Seq(
+    releaseProcess := Seq[ReleaseStep](
+      checkSnapshotDependencies,
+      inquireVersions,
+      runClean,
+      runTest,
+      setReleaseVersion,
+      commitReleaseVersion,
+      tagRelease,
+      ReleaseStep(
+        action = Command.process("publishSigned", _),
+        enableCrossBuild = crossScalaVersions.value.length > 1
+      ),
+      setNextVersion,
+      commitNextVersion,
+      ReleaseStep(
+        action = Command.process("sonatypeReleaseAll", _),
+        enableCrossBuild = crossScalaVersions.value.length > 1
+      ),
+      pushChanges
+    )
   )
 }

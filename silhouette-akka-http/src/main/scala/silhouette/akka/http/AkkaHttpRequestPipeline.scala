@@ -1,9 +1,11 @@
 /**
- * Copyright 2016 Mohiva Organisation (license at mohiva dot com)
+ * Licensed to the Minutemen Group under one or more contributor license
+ * agreements. See the COPYRIGHT file distributed with this work for
+ * additional information regarding copyright ownership.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you
+ * may not use this file except in compliance with the License. You may
+ * obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
@@ -97,7 +99,9 @@ case class AkkaHttpRequestPipeline(request: HttpRequest, sessionName: String) ex
    */
   override def withHeaders(headers: (String, String)*): RequestPipeline[HttpRequest] = {
     val newHeaders = headers.map(p => RawHeader(name = p._1, value = p._2))
-    val newRequest = request.copy(headers = request.headers.filter(h => !headers.exists(p => h.is(p._1.toLowerCase))) ++ newHeaders)
+    val newRequest = request.copy(
+      headers = request.headers.filter(h => !headers.exists(p => h.is(p._1.toLowerCase))) ++ newHeaders
+    )
     copy(newRequest, sessionName)
   }
 

@@ -1,6 +1,6 @@
 Silhouette - Akka HTTP
 ==========
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.mohiva/silhouette-akka-http_2.11/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.mohiva/silhouette-akka-http_2.11) [![Build Status](https://travis-ci.org/mohiva/silhouette-akka-http.png)](https://travis-ci.org/mohiva/silhouette-akka-http) [![Coverage Status](https://coveralls.io/repos/mohiva/silhouette-akka-http/badge.svg?branch=master&service=github)](https://coveralls.io/github/mohiva/silhouette-akka-http?branch=master) [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/mohiva/silhouette-akka-http?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Build Status](https://travis-ci.org/minutemen/silhouette-akka-http.png)](https://travis-ci.org/minutemen/silhouette-akka-http) [![Coverage Status](https://coveralls.io/repos/minutemen/silhouette-akka-http/badge.svg?branch=master&service=github)](https://coveralls.io/github/minutemen/silhouette-akka-http?branch=master) [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/minutemen/silhouette-akka-http?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![OpenCollective](https://opencollective.com/silhouette/backers/badge.svg)](#backers) 
 [![OpenCollective](https://opencollective.com/silhouette/sponsors/badge.svg)](#sponsors)
 
@@ -10,7 +10,7 @@ See [the project documentation] for more information.
 
 ## Support
 
-If you have question regarding Silhouette - Akka HTTP, please use the [chat] or the [mailing list]. **Please do not use the issue tracker for questions!**
+If you have question regarding Silhouette - Akka HTTP, please use the [chat] or the [forum]. **Please do not use the issue tracker for questions!**
 
 ## Contribution
 
@@ -53,7 +53,7 @@ Support us with a monthly donation and help us continue our activities. [[Become
 
 ## Sponsors
 
-Become a sponsor and get your logo on our README on Github with a link to your site. [[Become a sponsor](https://opencollective.com/silhouette#sponsor)]
+Become a sponsor and get your logo on our README on GitHub with a link to your site. [[Become a sponsor](https://opencollective.com/silhouette#sponsor)]
 
 <a href="https://opencollective.com/silhouette/sponsor/0/website" target="_blank"><img src="https://opencollective.com/silhouette/sponsor/0/avatar.svg"></a>
 <a href="https://opencollective.com/silhouette/sponsor/1/website" target="_blank"><img src="https://opencollective.com/silhouette/sponsor/1/avatar.svg"></a>
@@ -91,10 +91,10 @@ Become a sponsor and get your logo on our README on Github with a link to your s
 The code is licensed under [Apache License v2.0] and the documentation under [CC BY 3.0].
 
 [Akka HTTP]: http://akka.io/docs/
-[Silhouette]: https://github.com/mohiva/silhouette
-[the project documentation]: http://silhouette.mohiva.com/docs
-[chat]: https://gitter.im/mohiva/silhouette-akka-http
-[mailing list]: https://groups.google.com/forum/#!forum/silhouette-akka-http
+[Silhouette]: https://github.com/minutemen/silhouette
+[the project documentation]: http://www.silhouette.rocks/docs
+[chat]: https://gitter.im/minutemen/silhouette-akka-http
+[forum]: http://discourse.silhouette.rocks/
 [contributing guide]: CONTRIBUTING.md
 [Apache License v2.0]: http://www.apache.org/licenses/LICENSE-2.0
 [CC BY 3.0]: http://creativecommons.org/licenses/by/3.0/
