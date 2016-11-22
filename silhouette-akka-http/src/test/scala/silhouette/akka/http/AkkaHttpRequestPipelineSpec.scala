@@ -1,9 +1,11 @@
 /**
- * Copyright 2016 Mohiva Organisation (license at mohiva dot com)
+ * Licensed to the Minutemen Group under one or more contributor license
+ * agreements. See the COPYRIGHT file distributed with this work for
+ * additional information regarding copyright ownership.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you
+ * may not use this file except in compliance with the License. You may
+ * obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
@@ -243,7 +245,10 @@ class AkkaHttpRequestPipelineSpec extends Specification {
 
     val akkaHeaders = headers.flatMap(p => p._2.map(v => RawHeader(p._1, v))).toList
     val akkaCookie = cookies.map(c => akka.http.scaladsl.model.headers.`Cookie`(c.name, c.value))
-    val akkaQueryParams = Query(queryParams.map { case (name, values) => values.map(v => name -> v) }.flatten.toList: _*)
+    val akkaQueryParams = Query(queryParams.map {
+      case (name, values) =>
+        values.map(v => name -> v)
+    }.flatten.toList: _*)
     val request = HttpRequest(
       headers = akkaHeaders ++ akkaCookie,
       uri = Uri().withQuery(akkaQueryParams)

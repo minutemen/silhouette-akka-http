@@ -1,9 +1,11 @@
 /**
- * Copyright 2016 Mohiva Organisation (license at mohiva dot com)
+ * Licensed to the Minutemen Group under one or more contributor license
+ * agreements. See the COPYRIGHT file distributed with this work for
+ * additional information regarding copyright ownership.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you
+ * may not use this file except in compliance with the License. You may
+ * obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
@@ -27,7 +29,9 @@ import silhouette.http.{ Cookie, ResponsePipeline }
  * @param response The response this pipeline handles.
  * @param sessionName The cookie name where store session.
  */
-case class AkkaHttpResponsePipeline(response: HttpResponse, sessionName: String) extends ResponsePipeline[HttpResponse] {
+case class AkkaHttpResponsePipeline(response: HttpResponse, sessionName: String)
+  extends ResponsePipeline[HttpResponse] {
+
   private def isCookie: HttpHeader => Boolean = _.is(`Set-Cookie`.lowercaseName)
 
   /**
@@ -97,7 +101,9 @@ case class AkkaHttpResponsePipeline(response: HttpResponse, sessionName: String)
    */
   override def withHeaders(headers: (String, String)*): ResponsePipeline[HttpResponse] = {
     val newHeaders = headers.map(p => RawHeader(name = p._1, value = p._2))
-    val newResponse = response.copy(headers = response.headers.filter(h => !headers.exists(p => h.is(p._1.toLowerCase))) ++ newHeaders)
+    val newResponse = response.copy(
+      headers = response.headers.filter(h => !headers.exists(p => h.is(p._1.toLowerCase))) ++ newHeaders
+    )
     copy(response = newResponse)
   }
 
