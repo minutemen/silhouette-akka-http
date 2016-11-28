@@ -64,7 +64,7 @@ object Session {
     data.map(p => s"${urlEncode(p._1)}=${urlEncode(p._2)}").mkString("&")
 
   /**
-   * Deserializes the URL encoded representation of the session data.
+   * Deserialize the URL encoded representation of the session data.
    *
    * @param data An URL encoded string representation of the session data.
    * @return The session data.
