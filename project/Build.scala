@@ -26,11 +26,18 @@ object Build extends Build {
     base = file("silhouette-akka-http")
   )
 
+  val silhouetteAkkaHttpClient = Project(
+    id = "silhouette-akka-http-client",
+    base = file("silhouette-akka-http-client"),
+    dependencies = Seq(silhouetteAkkaHttp)
+  )
+
   val root = Project(
     id = "root",
     base = file("."),
     aggregate = Seq(
-      silhouetteAkkaHttp
+      silhouetteAkkaHttp,
+      silhouetteAkkaHttpClient
     ),
     settings = Defaults.coreDefaultSettings ++
       APIDoc.settings ++
